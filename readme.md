@@ -18,7 +18,7 @@ Der Einsatz auf alle anderen Noten wird zum Verlierpot
 
 Die Quote ist der Anteil den man vom Verlierpot bekommt und errechnet sich somit aus den Einsätzen der anderen Wetter (math. ausgedrückt: Quote = 1+ Einsatz/Gewinnerpot)
 
-Der Gewinn eines einzelnen berechnet sich durch Einsatz/Gewinnerpot _ Verliererpot _ 0,92 (0,08\*Verlierpot geht bei jeder Wette ans Wettbüro)
+Der Gewinn eines einzelnen berechnet sich durch Einsatz/Gewinnerpot * Verliererpot * 0,92 (0,08 * Verlierpot geht bei jeder Wette ans Wettbüro)
 
 Das Geld das die Gewinner zurückbekommen ist somit der Eigene Einsatz + dem Gewinn des einzelnen
 Die Verlierer verlieren ihren Einsatz
