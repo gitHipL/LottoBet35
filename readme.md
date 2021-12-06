@@ -1,6 +1,6 @@
 Lottobet35
 
-by Sebastion Maier and Leon Hipf
+by Sebastian Maier and Leon Hipf
 
 <b>Spielregeln:</b>
 
