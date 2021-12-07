@@ -1,0 +1,20 @@
+Wetten.txt
+
+	Spieler1 Spieler2 Spieler3...
+Wette1   Betrag1 Betrag2  Betrag3 ...
+Wette2
+Wette3
+.....
+
+main.cpp:
+Auslesen Wetten.txt:
+	Wettperson 1: 
+		Auslesen Wettperson 1 Note 1:
+			string Wettperson (Person auf dei gewettet wird)
+			Array mit Beträgen z.B. Betraege[0,0,0,3,2.5,0.5,0,0,0,0,0,0,0,0,6,...] (insgesamt length von 23)
+			int abgeschlossene_Wetten (anzahl der Wetten auf diese Note)
+			double Gesamtbetrag (Gesamtbetrag auf diese Note)
+		Auslesen Wettperson 1 Note 2:
+			...
+	Wettperson 2:
+	
