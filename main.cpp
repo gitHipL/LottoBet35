@@ -11,12 +11,12 @@ int main()
 {
     // declare variables
     const int SIZE = 500;
-    char list_noten[SIZE];                 // array for the noten file
-    char list_wetten[SIZE];                // array for the wetten file
-    string filename_noten = "Noten.txt";   // noten filename
-    string filename_wetten = "Wetten.txt"; // wetten filename
-    ifstream file_noten;                   // storage for file_noten
-    ifstream file_wetten;                  // storage for file_wetten
+    char list_noten[SIZE];                // array for the noten file
+    char list_wetten[SIZE];               // array for the wetten file
+    string filename_noten = "grades.txt"; // noten filename
+    string filename_wetten = "bets.txt";  // wetten filename
+    ifstream file_noten;                  // storage for file_noten
+    ifstream file_wetten;                 // storage for file_wetten
 
     /////////////// read the noten file //////////////////
     file_noten.open(filename_noten.c_str()); // open input file
@@ -24,9 +24,9 @@ int main()
     {
         while (!file_noten.eof()) // eof = end of file
         {
-            file_noten >> list_noten;              // write the file in the array
-            char *namen = strtok(list_noten, ":"); // split at : -> print names
-            char *noten = strtok(NULL, "\n");      // split at \n -> print noten
+            file_noten >> list_noten;               // write the file in the array
+            string namen = strtok(list_noten, ":"); // split at : -> print names
+            string noten = strtok(NULL, "\n");      // split at \n -> print noten
             cout << "Noten: " << noten << endl;
         }
     }
@@ -41,10 +41,10 @@ int main()
     {
         while (!file_wetten.eof()) // eof = end of file
         {
-            file_wetten >> list_wetten;             // write the file in the array
-            char *namen = strtok(list_wetten, ":"); // split at : -> print names
-            char *wetten = strtok(NULL, ",");       // split at , -> print noten
-            char *einsatz = strtok(NULL, "\n");     // split at \n -> print einsatz
+            file_wetten >> list_wetten;              // write the file in the array
+            string namen = strtok(list_wetten, ":"); // split at : -> print names
+            string wetten = strtok(NULL, ",");       // split at , -> print noten
+            string einsatz = strtok(NULL, "\n");     // split at \n -> print einsatz
             cout << "Einsatz: " << einsatz << endl;
         }
     }
