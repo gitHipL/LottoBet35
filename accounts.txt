@@ -1,4 +1,4 @@
-FellnerThomas:1
+FellnerThomas:0
 HaumtratzAndre:1
 HauserNicolas:1
 HinterbichlerNoah:1
