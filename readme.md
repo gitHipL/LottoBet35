@@ -5,7 +5,7 @@ by Sebastian Maier and Leon Hipf
 <b>Spielregeln:</b>
 
 Es gibt eine bestimmte Anzahl an Wetten, an denen Teil genommen werden kann.
-Z.b. Noten von Person a, b und c bei Text x und und Noten von Person d und e bei Text y
+Z.b. Noten von Person a, b und c bei Test x und und Noten von Person d und e bei Test y
 
 Man kann an einer mehreren oder alles Wetten teilnehmen.
 Der Mindesteinsatz beläuft sich auf 50 Cent pro Wette.
