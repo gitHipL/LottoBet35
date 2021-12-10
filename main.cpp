@@ -9,6 +9,7 @@ using namespace std;
 
 int main()
 {
+    /*
     // declare variables
     const int SIZE = 500;
     char list_noten[SIZE];                // array for the noten file
@@ -52,11 +53,38 @@ int main()
         cerr
             << "Can't find wetten file " << filename_wetten << endl;
     file_wetten.close(); // Close input file
-
+*/
     //***********************************Hipf Plan*******************************
 
     // Abfrage User: Name des Tests, Anzahl Wettpersonen, Namen der Wettpersonen, Note der Wettperson (Eingabe muss abgesichert werden, DAU sicher)
+    string testname;
+    int wettpersonen_anzahl = 0;
 
+    cout << "Name des Tests eingeben: " << endl;
+    cin >> testname;
+    cout << "Anzahl der Wettpersonen: " << endl;
+    cin >> wettpersonen_anzahl;
+    int noten_wettpersonen[wettpersonen_anzahl];
+    string wettpersonen[wettpersonen_anzahl];
+    for (int i = 0; i < wettpersonen_anzahl; i++)
+    {
+        cout << "Wettperson " << i << " :" << endl;
+        cin >> wettpersonen[i];
+        cout << "Note von " << wettpersonen[i] << " :" << endl;
+        cin >> noten_wettpersonen[i];
+    }
+    cout << "Name des Test: " << testname << endl;
+    for (int i = 0; i < wettpersonen_anzahl; i++)
+    {
+        cout << "Note " << wettpersonen[i] << ": " << noten_wettpersonen[i] << endl;
+    }
+
+    /*
+    cout << "Testname: " << testname << endl;
+    cout << "Anzahl der Wettpersonen: " << wettpersonen_anzahl << endl;
+    cout << "Namen der Wettpersonen: " << wettpersonen << endl;
+    cout << "Noten der Wettpersonen: " << noten_wettpersonen << endl;
+    */
     // Backup accounts.txt before doing anything
 
     // open bets.txt
