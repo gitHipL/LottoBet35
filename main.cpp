@@ -5,7 +5,14 @@ by Sebastian Maier and Leon Hipf
 #include <iostream>
 #include <string>
 #include <cstring>
+#include <filesystem>
+#include <sstream>
+
 using namespace std;
+
+string getTestname();
+int getWettpersonen_anzahl();
+int backup_accounts();
 
 int main()
 {
@@ -53,17 +60,13 @@ int main()
         cerr
             << "Can't find wetten file " << filename_wetten << endl;
     file_wetten.close(); // Close input file
+
+
 */
-    //***********************************Hipf Plan*******************************
-
     // Abfrage User: Name des Tests, Anzahl Wettpersonen, Namen der Wettpersonen, Note der Wettperson (Eingabe muss abgesichert werden, DAU sicher)
-    string testname;
-    int wettpersonen_anzahl = 0;
 
-    cout << "Name des Tests eingeben: " << endl;
-    cin >> testname;
-    cout << "Anzahl der Wettpersonen: " << endl;
-    cin >> wettpersonen_anzahl;
+    getTestname();
+    int wettpersonen_anzahl = getWettpersonen_anzahl();
     int noten_wettpersonen[wettpersonen_anzahl];
     string wettpersonen[wettpersonen_anzahl];
     for (int i = 0; i < wettpersonen_anzahl; i++)
@@ -73,19 +76,11 @@ int main()
         cout << "Note von " << wettpersonen[i] << " :" << endl;
         cin >> noten_wettpersonen[i];
     }
-    cout << "Name des Test: " << testname << endl;
-    for (int i = 0; i < wettpersonen_anzahl; i++)
-    {
-        cout << "Note " << wettpersonen[i] << ": " << noten_wettpersonen[i] << endl;
-    }
 
-    /*
-    cout << "Testname: " << testname << endl;
-    cout << "Anzahl der Wettpersonen: " << wettpersonen_anzahl << endl;
-    cout << "Namen der Wettpersonen: " << wettpersonen << endl;
-    cout << "Noten der Wettpersonen: " << noten_wettpersonen << endl;
-    */
     // Backup accounts.txt before doing anything
+    backup_accounts();
+
+    //***********************************Hipf Plan*******************************
 
     // open bets.txt
     // for x Wettpersonen
@@ -104,4 +99,58 @@ int main()
     // Nach \n aufsplitten, wenn im Array wo != 0 dann Zeile aktualisieren (Alter Wert + Gewinn/Verlust)
 
     // Methode die Zusammenfassung erzeugt
+}
+/////////////////////////////Abfrage User: Name des Tests, Anzahl Wettpersonen, Namen der Wettpersonen, Note der Wettperson (Eingabe muss abgesichert werden, DAU sicher)//////////////////////////////
+string getTestname()
+{
+    string testname;
+    cout << "Name des Tests eingeben: " << endl;
+    cin >> testname;
+    return testname;
+}
+
+int getWettpersonen_anzahl()
+{
+    int wettpersonen_anzahl = 0;
+
+    cout << "Anzahl der Wettpersonen: " << endl;
+    cin >> wettpersonen_anzahl;
+    return wettpersonen_anzahl;
+}
+
+////////////////////////////////////////////back up accounts before doing anything/////////////////////////////////////////////////////////////
+int backup_accounts()
+{
+    string line;
+    ifstream in_file{"accounts.txt"};
+    string date;
+    stringstream ss;
+    ofstream out_file;
+    //getting date for backup
+    cout
+        << "insert date like this 14-12-2021: " << endl;
+    cin >> date;
+    //creating the filename
+    ss << "backups/backup_accounts_" << date << ".txt";
+    out_file.open(ss.str().c_str());
+    //Copying the file
+    cout << "Copying accounts \n";
+    if (in_file && out_file)
+    {
+        while (getline(in_file, line))
+        {
+            out_file << line << "\n";
+        }
+        cout << "Copy Finished \n";
+    }
+    else
+    {
+        //Something went wrong
+        printf("Can't read File \n");
+    }
+    //Closing file
+    in_file.close();
+    out_file.close();
+
+    return 0;
 }
