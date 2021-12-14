@@ -68,7 +68,7 @@ int main()
     // Methode die Anzahl der Wetten auf jede Note berechnet -->Nur für Zusammenfassung
     // Gesamtwetteinsatz auf eine Wettperson -->Nur für Zusammenfassung
 
-    // Berechnung des Arrays[23] mit Gewinn und Verlust
+    // Berechnung des Arrays[23] mit Gewinn und Verlust von jeder Person
 
     // Methode die Kontostand aktualisiert, Input array[23] mit Gewinn und Verlust, no return:
     // open accounts.txt
