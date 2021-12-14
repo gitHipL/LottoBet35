@@ -13,58 +13,15 @@ using namespace std;
 string getTestname();
 int getWettpersonen_anzahl();
 int backup_accounts();
+string openbets();
 
 int main()
 {
     /*
-    // declare variables
-    const int SIZE = 500;
-    char list_noten[SIZE];                // array for the noten file
-    char list_wetten[SIZE];               // array for the wetten file
-    string filename_noten = "grades.txt"; // noten filename
-    string filename_wetten = "bets.txt";  // wetten filename
-    ifstream file_noten;                  // storage for file_noten
-    ifstream file_wetten;                 // storage for file_wetten
-
-    /////////////// read the noten file //////////////////
-    file_noten.open(filename_noten.c_str()); // open input file
-    if (file_noten.is_open())                // if the input file is open
-    {
-        while (!file_noten.eof()) // eof = end of file
-        {
-            file_noten >> list_noten;               // write the file in the array
-            string namen = strtok(list_noten, ":"); // split at : -> print names
-            string noten = strtok(NULL, "\n");      // split at \n -> print noten
-            cout << "Noten: " << noten << endl;
-        }
-    }
-    else // Error message
-        cerr
-            << "Can't find noten file " << filename_noten << endl;
-    file_noten.close(); // Close input file
-
-    /////////////// read the wetten file //////////////////
-    file_wetten.open(filename_wetten.c_str()); // open input file
-    if (file_wetten.is_open())                 // if the input file is open
-    {
-        while (!file_wetten.eof()) // eof = end of file
-        {
-            file_wetten >> list_wetten;              // write the file in the array
-            string namen = strtok(list_wetten, ":"); // split at : -> print names
-            string wetten = strtok(NULL, ",");       // split at , -> print noten
-            string einsatz = strtok(NULL, "\n");     // split at \n -> print einsatz
-            cout << "Einsatz: " << einsatz << endl;
-        }
-    }
-    else // Error message
-        cerr
-            << "Can't find wetten file " << filename_wetten << endl;
-    file_wetten.close(); // Close input file
-
 
 */
     // Abfrage User: Name des Tests, Anzahl Wettpersonen, Namen der Wettpersonen, Note der Wettperson (Eingabe muss abgesichert werden, DAU sicher)
-
+    /*
     getTestname();
     int wettpersonen_anzahl = getWettpersonen_anzahl();
     int noten_wettpersonen[wettpersonen_anzahl];
@@ -76,15 +33,16 @@ int main()
         cout << "Note von " << wettpersonen[i] << " :" << endl;
         cin >> noten_wettpersonen[i];
     }
+    
 
     // Backup accounts.txt before doing anything
     backup_accounts();
-
-    //***********************************Hipf Plan*******************************
-
-    // open bets.txt
+*/
+    ////////////////////////////////////////// open bets.txt //////////////////////////////////////////////////////////////
     // for x Wettpersonen
     // Methode die bets.txt ausließt, return string Wettperson, schreibt auf Array die Beträge (quasi zweiter return)
+    openbets();
+    //***********************************Hipf Plan*******************************
 
     // Auswertung der Daten:
     // Methode die Gesamtbetrag auf jede Note berechnet
@@ -154,3 +112,103 @@ int backup_accounts()
 
     return 0;
 }
+
+string openbets()
+{
+    int SIZE = 5000;
+    int count = 23;
+    string list_wetten;                  // array for the wetten file
+    string filename_wetten = "bets.txt"; // wetten filename
+    ifstream file_wetten;
+    string name; // storage for file_wetten
+
+    /////////////// read the wetten file //////////////////
+    file_wetten.open(filename_wetten.c_str()); // open input file
+    if (file_wetten.is_open())                 // if the input file is open
+    {
+        while (!file_wetten.eof()) // eof = end of file
+        {
+            getline(file_wetten, name);
+            /*
+            file_wetten >> list_wetten; // write the file in the array
+            getline(file_wetten, line);
+            
+
+            std::cout << "Please, enter your name: ";
+            std::cin.getline(name, 256);
+
+            std::cout << "Please, enter your favourite movie: ";
+            std::cin.getline(title, 256);
+
+            std::cout << name << "'s favourite movie is " << title << endl;
+
+            return 0;
+            */
+            cout << name << endl;
+        }
+
+        return list_wetten;
+    }
+    else // Error message
+        cerr
+            << "Can't find wetten file " << filename_wetten << endl;
+    file_wetten.close(); // Close input file
+}
+/*
+    //char list_noten[SIZE];                // array for the noten file
+    //string filename_noten = "grades.txt"; // noten filename
+    //ifstream file_noten;                  // storage for file_noten
+
+    /////////////// read the noten file //////////////////
+    file_noten.open(filename_noten.c_str()); // open input file
+    if (file_noten.is_open())                // if the input file is open
+    {
+        while (!file_noten.eof()) // eof = end of file
+        {
+            file_noten >> list_noten;               // write the file in the array
+            string namen = strtok(list_noten, ":"); // split at : -> print names
+            string noten = strtok(NULL, "\n");      // split at \n -> print noten
+            cout << "Noten: " << noten << endl;
+        }
+    }
+    else // Error message
+        cerr
+            << "Can't find noten file " << filename_noten << endl;
+    file_noten.close(); // Close input file
+
+//////////////////////////////////////////////////////////////////////////
+// declare variables
+    const int SIZE = 5000;
+    int count = 23;
+    char list_wetten[SIZE];              // array for the wetten file
+    string filename_wetten = "bets.txt"; // wetten filename
+    ifstream file_wetten;                // storage for file_wetten
+
+    /////////////// read the wetten file //////////////////
+    file_wetten.open(filename_wetten.c_str()); // open input file
+    if (file_wetten.is_open())                 // if the input file is open
+    {
+        while (!file_wetten.eof()) // eof = end of file
+        {
+            file_wetten >> list_wetten;              // write the file in the array
+            string name = strtok(list_wetten, "\n"); // split at \n -> print names
+            cout << name << endl;
+            for (int i = 1; i < 6; i++)
+            {
+                for (int j = 0; j < count; j++)
+                {
+                }
+            }
+            //string wetten = strtok(NULL, "\n");      // split at , -> print noten
+            //sötring einsatz = strtok(NULL, "\n");     // split at \n -> print einsatz
+        }
+    }
+    else // Error message
+        cerr
+            << "Can't find wetten file " << filename_wetten << endl;
+    file_wetten.close(); // Close input file
+
+
+
+
+*/
