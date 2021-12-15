@@ -115,39 +115,33 @@ int backup_accounts()
 
 string openbets()
 {
-    int SIZE = 5000;
-    int count = 23;
-    string list_wetten;                  // array for the wetten file
-    string filename_wetten = "bets.txt"; // wetten filename
+    int count = 3;
+    string list_wetten;                       // array for the wetten file
+    string filename_wetten = "test_bets.txt"; // wetten filename
     ifstream file_wetten;
-    string name; // storage for file_wetten
+    string name;
+    string store_wetten[5];
+    string lines[count];
 
     /////////////// read the wetten file //////////////////
     file_wetten.open(filename_wetten.c_str()); // open input file
     if (file_wetten.is_open())                 // if the input file is open
     {
+        getline(file_wetten, name); //read the name
+        cout << name << endl;
+
         while (!file_wetten.eof()) // eof = end of file
         {
-            getline(file_wetten, name);
-            /*
-            file_wetten >> list_wetten; // write the file in the array
-            getline(file_wetten, line);
-            
-
-            std::cout << "Please, enter your name: ";
-            std::cin.getline(name, 256);
-
-            std::cout << "Please, enter your favourite movie: ";
-            std::cin.getline(title, 256);
-
-            std::cout << name << "'s favourite movie is " << title << endl;
-
-            return 0;
-            */
-            cout << name << endl;
+            for (int j = 1; j < 5; j++)
+            {
+                for (int i = 1; i < count; i++) //read the bets
+                {
+                    getline(file_wetten, lines[i], ':');
+                    //cout << lines[i] << ",";
+                }
+            }
         }
-
-        return list_wetten;
+        return name;
     }
     else // Error message
         cerr
