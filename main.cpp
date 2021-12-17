@@ -5,10 +5,18 @@ by Sebastian Maier and Leon Hipf
 #include <iostream>
 #include <string>
 #include <cstring>
+#include <filesystem>
+#include <sstream>
+
 using namespace std;
+
+string getTestname();
+int getWettpersonen_anzahl();
+int backup_accounts();
 
 int main()
 {
+    /*
     // declare variables
     const int SIZE = 500;
     char list_noten[SIZE];                // array for the noten file
@@ -53,11 +61,26 @@ int main()
             << "Can't find wetten file " << filename_wetten << endl;
     file_wetten.close(); // Close input file
 
-    //***********************************Hipf Plan*******************************
 
+*/
     // Abfrage User: Name des Tests, Anzahl Wettpersonen, Namen der Wettpersonen, Note der Wettperson (Eingabe muss abgesichert werden, DAU sicher)
 
+    getTestname();
+    int wettpersonen_anzahl = getWettpersonen_anzahl();
+    int noten_wettpersonen[wettpersonen_anzahl];
+    string wettpersonen[wettpersonen_anzahl];
+    for (int i = 0; i < wettpersonen_anzahl; i++)
+    {
+        cout << "Wettperson " << i << " :" << endl;
+        cin >> wettpersonen[i];
+        cout << "Note von " << wettpersonen[i] << " :" << endl;
+        cin >> noten_wettpersonen[i];
+    }
+
     // Backup accounts.txt before doing anything
+    backup_accounts();
+
+    //***********************************Hipf Plan*******************************
 
     // open bets.txt
     // for x Wettpersonen
@@ -76,4 +99,58 @@ int main()
     // Nach \n aufsplitten, wenn im Array wo != 0 dann Zeile aktualisieren (Alter Wert + Gewinn/Verlust)
 
     // Methode die Zusammenfassung erzeugt
+}
+/////////////////////////////Abfrage User: Name des Tests, Anzahl Wettpersonen, Namen der Wettpersonen, Note der Wettperson (Eingabe muss abgesichert werden, DAU sicher)//////////////////////////////
+string getTestname()
+{
+    string testname;
+    cout << "Name des Tests eingeben: " << endl;
+    cin >> testname;
+    return testname;
+}
+
+int getWettpersonen_anzahl()
+{
+    int wettpersonen_anzahl = 0;
+
+    cout << "Anzahl der Wettpersonen: " << endl;
+    cin >> wettpersonen_anzahl;
+    return wettpersonen_anzahl;
+}
+
+////////////////////////////////////////////back up accounts before doing anything/////////////////////////////////////////////////////////////
+int backup_accounts()
+{
+    string line;
+    ifstream in_file{"accounts.txt"};
+    string date;
+    stringstream ss;
+    ofstream out_file;
+    //getting date for backup
+    cout
+        << "insert date like this 14-12-2021: " << endl;
+    cin >> date;
+    //creating the filename
+    ss << "backups/backup_accounts_" << date << ".txt";
+    out_file.open(ss.str().c_str());
+    //Copying the file
+    cout << "Copying accounts \n";
+    if (in_file && out_file)
+    {
+        while (getline(in_file, line))
+        {
+            out_file << line << "\n";
+        }
+        cout << "Copy Finished \n";
+    }
+    else
+    {
+        //Something went wrong
+        printf("Can't read File \n");
+    }
+    //Closing file
+    in_file.close();
+    out_file.close();
+
+    return 0;
 }
